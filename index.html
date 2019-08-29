@@ -32,7 +32,7 @@
   <link
     id="color-CSS"
     rel="stylesheet"
-    href="/css/aafu_light.css"
+    href="/css/aafu_dark.css"
     type="text/css"
   />
   <link rel="stylesheet" href="/css/aafu.css" />
@@ -58,6 +58,41 @@
   <div class="col-md-4 text-center p-2 mt-3">
     <div class="profile-area rounded text-center position-relative">
       
+<div class="toggleSwitchContainer" style="width: 45px; height: 45px;">
+  <i
+    class="fas fa-toggle-on zoomlink"
+    id="toggle"
+    title="Toggle Theme"
+    onclick="toggleTheme(this)"
+  ></i>
+</div>
+
+<script>
+  const mainTheme =
+    "\/css\/aafu_dark.css";
+  const altTheme =
+    "\/css\/aafu_light.css";
+  const currentCSS = document.querySelector("#color-CSS");
+  function toggleTheme(elem) {
+    
+    
+    elem.classList.toggle("fa-toggle-off");
+    elem.classList.toggle("fa-toggle-on");
+    if (currentCSS.href.includes(mainTheme)) {
+      currentCSS.setAttribute("href", "." + altTheme);
+    } else {
+      currentCSS.setAttribute("href", "." + mainTheme);
+    }
+  }
+
+  function changeThemeColor() {
+    themeColor.content = getComputedStyle(document.body)["background-color"];
+  }
+  const thisBody = document.body;
+  thisBody.addEventListener("webkitTransitionEnd", changeThemeColor);
+  thisBody.addEventListener("transitionend", changeThemeColor);
+</script>
+
 
       <div class="d-flex justify-content-center pt-2">
   <div class="w-100 h-100">
